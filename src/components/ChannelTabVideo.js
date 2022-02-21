@@ -30,7 +30,6 @@ const ChannelTabVideo = () => {
   if (!videos?.length) {
     return <p>This channel has no videos at the moment</p>;
   }
-
   return (
     <Wrapper>
       <div className="videos">
@@ -39,7 +38,7 @@ const ChannelTabVideo = () => {
           <Link to={`/watch/${video.id}`} key={video.id} title={video.title}>
             <VideoCard nousername={true} hideavatar={true} video={video}/>
           </Link>
-          <DeleteVideo/>
+          <DeleteVideo videoId={video.id}/>
           </div>
         ))}
       </div>
