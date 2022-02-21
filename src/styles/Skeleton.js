@@ -14,7 +14,7 @@ const SkeletonPulse = styled.div`
   display: block;
   height: 100%;
   width: 100%;
-  background: linear-gradient(-90deg, #121212 0%, #161616 50%, #121212 100%);
+  background: linear-gradient(-90deg, #ff8fa3 0%, #ff758f 50%, #ff4d6d 100%);
   background-size: 400% 400%;
   animation: ${pulse} 1s linear;
 `;

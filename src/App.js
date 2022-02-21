@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 import GlobalStyle from "./styles/GlobalStyle";
-import { darkTheme } from "./styles/theme";
+import { darkTheme, primaryTheme } from "./styles/theme";
 import Router from "./Router";
 import Auth from "./components/Auth";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +12,7 @@ const App = () => {
   const { token } = useSelector((state) => state.user.data);
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={primaryTheme}>
       <GlobalStyle />
       <ToastContainer
         autoClose={2500}

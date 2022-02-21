@@ -8,14 +8,14 @@ import { login } from "../reducers/user";
 const Login = ({ setAuth }) => {
   const dispatch = useDispatch();
 
-  const email = useInput("");
-  const password = useInput("");
+  const email = useInput("nobody@fully.com");
+  const password = useInput("12345678");
 
   const handleLogin = (e) => {
     e.preventDefault();
 
     if (!email.value.trim() || !password.value.trim()) {
-      return toast.error("Please fill in all the fields");
+      return toast.error("Please, fill in all the fields");
     }
 
     const payload = {
@@ -33,23 +33,23 @@ const Login = ({ setAuth }) => {
 
   return (
     <StyledAuth>
-      <h2>Login to your account</h2>
+      <h2>Login To Your Account</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           value={email.value}
           onChange={email.onChange}
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password.value}
           onChange={password.onChange}
         />
         <div className="action input-group">
-          <span className="pointer" onClick={() => setAuth("SIGNUP")}>
-            Signup instead
+          <span  onClick={() => setAuth("SIGNUP")}>
+            You don't have an account? <span className="pointer">Sign Up</span>  
           </span>
           <button>Login</button>
         </div>

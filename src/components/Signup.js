@@ -37,6 +37,9 @@ export const StyledAuth = styled.div`
     color: ${(props) => props.theme.primaryColor};
   }
 
+.pointer {
+  color: ${(props) => props.theme.red2};
+}
   .action {
     margin-top: 1rem;
   }
@@ -75,7 +78,7 @@ const Signup = ({ setAuth }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
+    if ( //trim() remove the blanks at the start and end of string
       !firstname.value.trim() ||
       !lastname.value.trim() ||
       !username.value.trim() ||
@@ -87,15 +90,15 @@ const Signup = ({ setAuth }) => {
     }
 
     if (password1.value !== password2.value) {
-      return toast.error("Password does not match");
+      return toast.error("Sorry, password doesn't match");
     }
 
     if (username.value.length <= 3) {
-      return toast.error("User name should be at least four characters");
+      return toast.error("User name should be at least four characters. Choose a longer user name");
     }
 
-    const re = /^[a-z0-9\x20]+$/i;
-    if (!re.exec(username.value)) {
+    const regex = /^[a-z0-9\x20]+$/i;
+    if (!regex.exec(username.value)) {
       return toast.error("Choose a better username");
     }
 
@@ -121,51 +124,53 @@ const Signup = ({ setAuth }) => {
 
   return (
     <StyledAuth>
-      <h2>Create your account</h2>
+      <h2>Create Your Account</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <input
             type="text"
-            placeholder="firstname"
+            placeholder="First name"
             value={firstname.value}
             onChange={firstname.onChange}
           />
           <input
             type="text"
-            placeholder="lastname"
+            placeholder="Last name"
             value={lastname.value}
             onChange={lastname.onChange}
           />
         </div>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Username"
           value={username.value}
           onChange={username.onChange}
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           value={email.value}
           onChange={email.onChange}
         />
         <div className="input-group">
           <input
             type="password"
-            placeholder="password"
+            placeholder="Password"
             value={password1.value}
             onChange={password1.onChange}
           />
           <input
             type="password"
-            placeholder="confirm"
+            placeholder="Confirm password"
             value={password2.value}
             onChange={password2.onChange}
           />
         </div>
         <div className="action input-group">
           <span className="pointer" onClick={() => setAuth("LOGIN")}>
-            Signin instead
+          <span className="pointer" onClick={() => setAuth("SIGNUP")}>
+            I already have an account  
+          </span>
           </span>
           <button>Sign Up</button>
         </div>
