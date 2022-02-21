@@ -34,7 +34,7 @@ const SearchResults = () => {
   }
 
   if (!isFetching && !videos.length && !users.length) {
-    return <NoResults title="No results found" text="Try different keywords" />;
+    return <NoResults title="No results found😥" text="Try different keywords" />;
   }
 
   return (

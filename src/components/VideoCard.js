@@ -22,6 +22,11 @@ const Wrapper = styled.div`
     top: 5px;
   }
 
+  .video-info h4 {
+    text-transform: capitalize;
+    color: ${(props) => props.theme.maroon};
+  }
+
   .video-info span {
     font-size: 0.9rem;
     padding-right: 0.1rem;
@@ -64,7 +69,7 @@ const VideoCard = ({ nousername, hideavatar, video }) => {
             <span className="secondary">{video.User.username}</span>
           )}
           <p className="secondary">
-            <span>{video.views || 0} 👁views</span> <span><span role="img" aria-label="dot">🔘</span></span>{" "}
+            <span>{video.views || 0} 👁views</span> <span><span role="img" aria-label="dot">🕒</span></span>{" "}
             <span>{timeSince(video.createdAt)} ago</span>
           </p>
         </div>

@@ -19,6 +19,7 @@ const primaryTheme = {
   secondaryColor: "#FFF",
   grey: "#ff8fa3",
   darkGrey: "#ff758f",
+  maroon:"#800f2f",
   black: "#ffccd5",
   red: "#c9184a",
   blue: "#a4133c",

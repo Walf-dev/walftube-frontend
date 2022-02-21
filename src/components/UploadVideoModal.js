@@ -142,7 +142,7 @@ const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
       }
 
       const newVideo = {
-        title: title.value,
+        title: title.value.toLowerCase(),
         description: description.value,
         url,
         thumbnail,
@@ -195,7 +195,7 @@ const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
             <h2>Details</h2>
             <input
               type="text"
-              placeholder="Enter the title"
+              placeholder="Enter the title of your video"
               value={title.value}
               onChange={title.onChange}
             />

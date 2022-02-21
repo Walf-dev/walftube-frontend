@@ -100,7 +100,8 @@ const Wrapper = styled.div`
 
 const DeleteVideoModal = ({ closeModal }) => {
 
-  const handleDeleteVideo = () => {
+  const handleDeleteVideo = (videoId) => {
+    client(`${process.env.REACT_APP_BE}/videos/${videoId}/deleteVideo`);
     toast.dark("Video deleted");
     closeModal();
   };

@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   .icons svg {
     width: 30px;
     height: 30px;
-    fill: ${(props) => props.theme.darkGrey};
+    fill: ${(props) => props.theme.maroon};
   }
 
   .icons img {

@@ -44,6 +44,11 @@ const Wrapper = styled.div`
     margin-bottom: 1rem;
   }
 
+  .video-info h3 {
+    text-transform: capitalize;
+    color: ${(props) => props.theme.maroon};
+  }
+
   .video-info span {
     color: ${(props) => props.theme.secondaryColor};
   }

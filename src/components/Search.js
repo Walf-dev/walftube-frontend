@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
-
+import useSearchInput from "../hooks/useSearchInput";
 const Wrapper = styled.div`
   input.search {
     background: ${(props) => props.theme.black};
@@ -22,15 +22,15 @@ const Wrapper = styled.div`
 
 const Search = () => {
   const history = useHistory();
-  const searchterm = useInput("");
+  const searchterm = useSearchInput("");
 
   const handleSearch = (e) => {
     if (e.keyCode === 13) {
       if (!searchterm.value.trim()) {
-        return toast.dark("Please enter the searchterm");
+        return toast.dark("Please enter the search term");
       }
 
-      history.push(`/results/${searchterm.value}`);
+      history.push(`/results/${searchterm.value.toLowerCase()}`);
       searchterm.setValue("");
     }
   };

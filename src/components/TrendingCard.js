@@ -18,6 +18,11 @@ const Wrapper = styled.div`
     margin-left: 1.2rem;
   }
 
+  .video-info-container h3 {
+    text-transform: capitalize;
+    color: ${(props) => props.theme.maroon};
+  }
+
   p {
     font-size: 0.9rem;
   }
