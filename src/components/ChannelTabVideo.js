@@ -30,7 +30,6 @@ const ChannelTabVideo = () => {
   if (!videos?.length) {
     return <p>This channel has no videos at the moment</p>;
   }
-
   return (
     <Wrapper>
       <div className="videos">
