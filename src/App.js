@@ -7,9 +7,11 @@ import { darkTheme, primaryTheme } from "./styles/theme";
 import Router from "./Router";
 import Auth from "./components/Auth";
 import "react-toastify/dist/ReactToastify.css";
+import store from "./store";
 
 const App = () => {
   const { token } = useSelector((state) => state.user.data);
+console.log(store.getState())
 
   return (
     <ThemeProvider theme={primaryTheme}>

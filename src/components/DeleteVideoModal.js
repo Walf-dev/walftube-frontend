@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import { toast } from "react-toastify";
@@ -7,7 +7,9 @@ import Button from "../styles/Button";
 import useInput from "../hooks/useInput";
 import { updateUser } from "../reducers/user";
 import { updateProfile } from "../reducers/profile";
-import { client, updateUserLocalSt, upload } from "../utils";
+import { client, updateUserLocalSt, upload, deletion } from "../utils";
+import { removeVideo } from "../reducers/video";
+import { getProfile } from "../reducers/profile";
 
 const openModal = keyframes`
 	from {
@@ -98,10 +100,26 @@ const Wrapper = styled.div`
   }
 `;
 
-const DeleteVideoModal = ({ closeModal }) => {
+const DeleteVideoModal = ({ closeModal, videoId }) => {
+  const videos = useSelector((state) => state.profile.data.videos);
+  const { id } = useSelector((state) => state.profile.data);
 
-  const handleDeleteVideo = (videoId) => {
-    client(`${process.env.REACT_APP_BE}/videos/${videoId}/deleteVideo`);
+  console.log(videos)
+  console.log(id)
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfile(id));
+  }, [dispatch, id]);
+
+  const handleDeleteVideo = async(videoId) => {
+    const nonDeletedVideo = videos.filter((video) => video.id !== videoId)
+console.log(nonDeletedVideo)
+
+    await deletion(`${process.env.REACT_APP_BE}/videos/${videoId}/deleteVideo`);
+    await dispatch(removeVideo(nonDeletedVideo));
     toast.dark("Video deleted");
     closeModal();
   };
@@ -115,7 +133,7 @@ const DeleteVideoModal = ({ closeModal }) => {
             <CloseIcon onClick={() => closeModal()} />
             <span>Are you sure ?</span>
           </h3>
-          <Button onClick={handleDeleteVideo}>Delete</Button>
+          <Button onClick={()=>handleDeleteVideo(videoId)}>Delete</Button>
         </div>
       </div>
     </Wrapper>

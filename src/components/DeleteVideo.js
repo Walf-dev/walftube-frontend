@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const DeleteVideo = () => {
+const DeleteVideo = ({videoId}) => {
 
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
@@ -32,12 +32,12 @@ const DeleteVideo = () => {
     <>
       <Wrapper>
         <div>
-          <Button grey onClick={() => setShowModal(true)}>
+          <Button  grey onClick={() => setShowModal(true)}>
             Delete Video
           </Button>
         </div>
       </Wrapper>
-      {showModal && <DeleteVideoModal closeModal={closeModal} />}
+      {showModal && <DeleteVideoModal closeModal={closeModal} videoId={videoId}/>}
     </>
   );
 };

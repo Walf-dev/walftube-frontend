@@ -128,7 +128,6 @@ const Wrapper = styled.div`
 const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
   const dispatch = useDispatch();
   const { data: user } = useSelector((state) => state.user);
-
   const title = useInput("");
   const description = useInput("");
   const [tab, setTab] = useState("PREVIEW");

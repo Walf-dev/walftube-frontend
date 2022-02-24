@@ -19,10 +19,16 @@ const videoSlice = createSlice({
       state.isFetching = true;
       state.data = {};
     },
+    removeVideo(state, action) {
+      state.data = {
+        ...state.data,//copying the original state
+        videos: [action.payload],//new videos array
+      };
+    },
     addComment(state, action) {
       state.data = {
-        ...state.data,
-        comments: [action.payload, ...state.data.comments],
+        ...state.data,//copying the original state
+        comments: [action.payload, ...state.data.comments],//new comments array
       };
     },
     like(state, action) {
@@ -83,6 +89,7 @@ export const {
   cancelDislike,
   subscribeFromVideo,
   unsubscribeFromVideo,
+  removeVideo,
 } = videoSlice.actions;
 
 export default videoSlice.reducer;
