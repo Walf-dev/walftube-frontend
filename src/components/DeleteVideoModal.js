@@ -104,9 +104,8 @@ const DeleteVideoModal = ({ closeModal, videoId }) => {
   const videos = useSelector((state) => state.profile.data.videos);
   const { id } = useSelector((state) => state.profile.data);
 
-  console.log(videos)
-  console.log(id)
-
+  console.log(videos);
+  console.log(id);
 
   const dispatch = useDispatch();
 
@@ -114,9 +113,9 @@ const DeleteVideoModal = ({ closeModal, videoId }) => {
     dispatch(getProfile(id));
   }, [dispatch, id]);
 
-  const handleDeleteVideo = async(videoId) => {
-    const nonDeletedVideo = videos.filter((video) => video.id !== videoId)
-console.log(nonDeletedVideo)
+  const handleDeleteVideo = async (videoId) => {
+    const nonDeletedVideo = videos.filter((video) => video.id !== videoId);
+    console.log(nonDeletedVideo);
 
     await deletion(`${process.env.REACT_APP_BE}/videos/${videoId}/deleteVideo`);
     await dispatch(removeVideo(nonDeletedVideo));
@@ -133,7 +132,7 @@ console.log(nonDeletedVideo)
             <CloseIcon onClick={() => closeModal()} />
             <span>Are you sure ?</span>
           </h3>
-          <Button onClick={()=>handleDeleteVideo(videoId)}>Delete</Button>
+          <Button onMouseDown={() => handleDeleteVideo(videoId)}>Delete</Button>
         </div>
       </div>
     </Wrapper>

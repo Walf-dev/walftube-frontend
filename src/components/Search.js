@@ -40,7 +40,7 @@ const Search = () => {
       <input
         className="search"
         type="text"
-        placeholder="Search"
+        placeholder="Search by title"
         value={searchterm.value}
         onKeyDown={handleSearch}
         onChange={searchterm.onChange}

@@ -165,6 +165,7 @@ const UploadVideoModal = ({ previewVideo, closeModal, url, thumbnail }) => {
           },
         })
       );
+      window.location.reload(false);
     }
   };
 
